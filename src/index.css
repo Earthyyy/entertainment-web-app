@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+:root {
+  font-family: 'Outfit', sans-serif;
+}
+
+
+@layer components {
+  .heading-lg {
+    @apply text-[2rem] font-light;
+  }
+
+  .heading-md {
+    @apply text-[1.5rem] font-light;
+  }
+
+  .heading-sm {
+    @apply text-[1.5rem] font-medium;
+  }
+
+  .heading-xs {
+    @apply text-[1.125rem] font-medium;
+  }
+
+  .body-md {
+    @apply text-[0.9375rem] font-light;
+  }
+
+  .body-xs {
+    @apply text-[0.8125rem] font-light;
+  }
+
+  .nav-icon {
+    @apply w-4 h-4 tablet:w-5 tablet:h-5;
+  }
+}
+
+/* Josh Comeau CSS Reset*/
+
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/*
+    2. Remove default margin
+  */
+* {
+    margin: 0;
+}
+
+/*
+    3. Allow percentage-based heights in the application
+  */
+html,
+body {
+    min-height: 100vh;
+}
+
+/*
+    Typographic tweaks!
+    4. Add accessible line-height
+    5. Improve text rendering
+  */
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/*
+    6. Improve media defaults
+  */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/*
+    7. Remove built-in form typography styles
+  */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
