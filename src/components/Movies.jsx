@@ -1,8 +1,17 @@
 import React from 'react'
+import ShowCard from './ShowCard'
 
-const Movies = () => {
+const Movies = ({ items }) => {
+  const movies = items.filter(item => item.category === 'Movie')
   return (
-    <div>Movies</div>
+    <div className='flex flex-col gap-4 overflow-hidden px-4'>
+      <h2 className='text-white text-[1.25rem] font-light tablet:heading-lg'>Movies</h2>
+      <div className='flex gap-[0.9375rem] tablet:gap-[29px] desktop:gap-10 flex-wrap overflow-y-auto scrollbar-hide'>
+        {movies.map((item, index) => (
+          <ShowCard item={item} key={index} />
+        ))}
+      </div>
+    </div>
   )
 }
 

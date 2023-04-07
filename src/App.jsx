@@ -14,12 +14,23 @@ import {
   Series,
   Bookmarks
 } from './components'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
 
 
 
 function App() {
   const [active, setActive] = useState("home");
+  // Fetch data from data.json and store in a state variable
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    fetch('/data.json')
+      .then(res => res.json())
+      .then(data => setItems(data))
+  }, [])
+
+  
 
 
   return (
@@ -31,10 +42,10 @@ function App() {
         <main className='flex flex-col gap-6 flex-1 overflow-hidden'>
           <Search active={active} />
           <Routes>
-            <Route path="/" element={<Home/>}/>
-            <Route path="/search" element={<SearchResults/>}/>
-            <Route path="/movies" element={<Movies/>}/> 
-            <Route path="/series" element={<Series/>}/>
+            <Route path="/" element={<Home items={items} />}/>
+            <Route path="/search" element={<SearchResults items={items} />}/>
+            <Route path="/movies" element={<Movies items={items} />}/> 
+            <Route path="/series" element={<Series items={items} />}/>
             <Route path="/bookmarks" element={<Bookmarks/>}/>
           </Routes>
         </main>
