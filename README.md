@@ -43,8 +43,8 @@ Users should be able to:
 
 ### Links
 
-- [Solution URL](https://your-solution-url.com)
-- [Live Site URL](https://your-live-site-url.com)
+- [Solution URL](https://www.frontendmentor.io/solutions/entertainment-web-app-using-reactjs-and-tailwindcss-FmtoPLmQZi)
+- [Live Site URL](https://earthyy-entertainment-web-app.netlify.app/)
 
 ## My process
 
