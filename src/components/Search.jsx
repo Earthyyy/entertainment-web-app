@@ -1,13 +1,13 @@
-import React from 'react'
-
 import magnifyingGlass from '../assets/icon-search.svg';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 
-const Search = ({ active }) => {
+const Search = () => {
 
   const navigate = useNavigate();
+  const active = useSelector(state => state.active.value);
 
 
   let placeholder;
@@ -24,7 +24,8 @@ const Search = ({ active }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const query = e.target.elements.q.value;
-    navigate(`/search?q=${query}`);
+    const search = active === 'home' ? '' : `${active}`;
+    navigate(`/search/${search}?q=${query}`);
   }
 
 
@@ -33,9 +34,8 @@ const Search = ({ active }) => {
 
   return (
 
-    <form action='search' className='bg-transparent flex gap-6 items-start mx-4 tablet:mx-6 desktop:mt-16 desktop:mx-0 desktop:mr-8' onSubmit={handleSubmit}>
+    <form action='search' className='bg-transparent flex gap-6 items-start mx-4 tablet:mx-6 desktop:mt-16 desktop:ml-6 desktop:mr-8' onSubmit={handleSubmit}>
 
-      {/* Wrap the img below in a button tag and remove all the default styling from the button */}
 
       <button>
         <img src={magnifyingGlass} className='w-6 h-6 cursor-pointer tablet:w-8 tablet:h-8 hover:opacity-70' />

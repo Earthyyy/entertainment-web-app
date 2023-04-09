@@ -1,12 +1,30 @@
-import React, { useEffect } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useParams, useSearchParams } from 'react-router-dom'
 import ShowCard from './ShowCard';
+import { useSelector } from 'react-redux';
 
-const SearchResults = ({items}) => {
+const SearchResults = () => {
+  const shows = useSelector(state => state.shows.list);
   const [searchParams] = useSearchParams();
   const query = searchParams.get('q');
-  
-  const results = items.filter(item => item.title.toLowerCase().includes(query.toLowerCase()));
+  let { section } = useParams();
+  let results;
+
+  switch (section) {
+    case 'movies':
+      results = shows.filter(item => item.category === 'Movie');
+      break;
+    case 'series':
+      results = shows.filter(item => item.category === 'TV Series');
+      break;
+    case 'bookmarks':
+      results = shows.filter(item => item.isBookmarked);
+      break;
+    default:
+      results = shows;
+      break;
+  }
+
+  results = results.filter(item => item.title.toLowerCase().includes(query.toLowerCase()));
 
   return (
       <div className='flex flex-col gap-4 overflow-hidden px-4'>
